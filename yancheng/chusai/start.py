@@ -10,7 +10,7 @@ from sklearn import cross_validation
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 
-train_data = pd.read_csv('/root/word2vec/yancheng/data/train_data.txt', sep='\t')
+train_data = pd.read_csv('/home/zfan/pycharm/bda/yancheng/data/train_20171215.txt', sep='\t')
 train_data.columns = ['date', 'day_of_week', 'brand', 'cnt']
 train_data = train_data.drop(['brand'],axis=1)
 train_dispose = train_data[['date','day_of_week', 'cnt']].\
@@ -60,7 +60,7 @@ def data_process(data):
             return -1
     data['day_mean'] = data['day_of_week'].map(flag_to_number)
     data['cnt_log'] = data['cnt'].apply(lambda x: np.log(1 + x))
-    data.to_csv('/root/word2vec/yancheng/data/train_dispose2.csv',index=None)
+    data.to_csv('/home/zfan/pycharm/bda/yancheng/data/train_dispose2.csv',index=None)
     data_all = data.drop(['date', 'day_of_week', 'cnt','cnt_log'], axis=1)
     # 对数值型进行归一化
     scaler = StandardScaler().fit(data_all)
@@ -92,7 +92,7 @@ def many_model(train,test):
 
     # res['diff'] = res['cnt'] - res['y_pred']
     # out = pd.merge(test,res,on=['date','cnt_log'],how='outer')
-    # out.to_csv('/root/word2vec/yancheng/data/pre1.csv',index=None)
+    # out.to_csv('/home/zfan/pycharm/bda/yancheng/data/pre1.csv',index=None)
     return a , res
 
 frame_boss = feature_1(90)
