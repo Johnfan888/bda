@@ -1,0 +1,19 @@
+去掉周天数据,使用了全部提取的人工特征
+seq_len = 30
+conv1_filter = 32
+conv1_k_size = (1,14)
+conv1_stride = (1,1)
+
+conv2_filter = 64
+conv2_k_size = (1,7)
+conv2_stride = (1,1)
+
+两个卷积层+1个池化层
+使用BatchNormalization
+CNN：90多万 
+CNN(特征)+lgb:
+1042675.90669
+人工特征+lgb:
+660095.887738
+特征(CNN+人工)+lgb:
+601941.754013
